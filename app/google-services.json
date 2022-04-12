@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "275236466560",
+    "project_id": "ecrowdpop",
+    "storage_bucket": "ecrowdpop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275236466560:android:82d09f8addf69765a9db65",
+        "android_client_info": {
+          "package_name": "com.example.ecrowdpop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275236466560-v2alcdiofrr283iq3ktkptprkl9abcrg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAilgiaoIsQaXYWT4o0xXMtT76iQsT4MWE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275236466560-v2alcdiofrr283iq3ktkptprkl9abcrg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
