@@ -1,5 +1,4 @@
 package com.example.ecrowdpop;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,6 +48,8 @@ public class PostActivity extends AppCompatActivity {
     ImageView image_added;
     TextView post;
     SocialAutoCompleteTextView description;
+    private int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,7 @@ public class PostActivity extends AppCompatActivity {
     }
 
     private void uploadImage() {
+
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Posting");
