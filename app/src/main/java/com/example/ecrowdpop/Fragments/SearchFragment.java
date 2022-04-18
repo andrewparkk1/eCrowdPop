@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.hendraanggrian.appcompat.socialview.Hashtag;
 import com.hendraanggrian.appcompat.widget.HashtagArrayAdapter;
 import com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView;
-//import com.example.ecrowdpop.Adapter.TagAdapter;
+import com.example.ecrowdpop.Adapter.TagAdapter;
 import com.example.ecrowdpop.Adapter.UserAdapter;
 
 import com.example.ecrowdpop.Model.HashTag;
@@ -35,11 +35,12 @@ import com.example.ecrowdpop.R;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class SearchFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerView recyclerViewTags;
-//    private TagAdapter tagAdapter;
+    private TagAdapter tagAdapter;
     private UserAdapter userAdapter;
     private List<User> mUsers;
 
@@ -72,8 +73,8 @@ public class SearchFragment extends Fragment {
         userAdapter = new UserAdapter(getContext() , mUsers , true);
         recyclerView.setAdapter(userAdapter);
 
-//        tagAdapter = new TagAdapter(getContext() , mAvailablehashtags , mAvailablehashtagsCount);
-//        recyclerViewTags.setAdapter(tagAdapter);
+        tagAdapter = new TagAdapter(getContext() , mAvailablehashtags , mAvailablehashtagsCount);
+        recyclerViewTags.setAdapter(tagAdapter);
 
         readUsers();
         readTags();
@@ -111,7 +112,7 @@ public class SearchFragment extends Fragment {
             }
         }
 
-//        tagAdapter.filterList(mSearchtags , mSearchTagsCount);
+        tagAdapter.filterList(mSearchtags , mSearchTagsCount);
 
     }
 
@@ -127,7 +128,7 @@ public class SearchFragment extends Fragment {
                     mAvailablehashtagsCount.add(snapshot.getChildrenCount() + " ");
                 }
 
-//                tagAdapter.notifyDataSetChanged();
+                tagAdapter.notifyDataSetChanged();
             }
 
             @Override
