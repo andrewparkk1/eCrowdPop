@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-//import com.example.ecrowdpop.Fragments.TagListFragment;
+import com.example.ecrowdpop.Fragments.TagListFragment;
 import com.example.ecrowdpop.Model.HashTag;
 import com.example.ecrowdpop.R;
 
@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//UNCOMMENT TAGLISTFRAMGNET
 public class TagAdapter extends RecyclerView.Adapter<TagAdapter.ViewHolder>{
 
     private Context mContext;
@@ -82,9 +81,9 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.ViewHolder>{
                 SharedPreferences.Editor editor = mContext.getSharedPreferences("TagPrefs" , Context.MODE_PRIVATE).edit();
                 editor.putString("tagList" , json);
                 editor.apply();
-//
-//                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container ,
-//                        new TagListFragment()).commit();
+
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container ,
+                        new TagListFragment()).commit();
             }
         });
 

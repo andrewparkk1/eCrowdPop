@@ -39,15 +39,15 @@
             android:id="@+id/availability_username"
             android:visibility="gone"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
-            android:text="CHECK"
-            android:layout_gravity="end"
-            android:layout_marginTop="5dp"
-            android:id="@+id/check_username"
-            android:textColor="@color/colorPrimary"/>
+<!--        <Button-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/button_background"-->
+<!--            android:text="CHECK"-->
+<!--            android:layout_gravity="end"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:id="@+id/check_username"-->
+<!--            android:textColor="@color/colorPrimary"/>-->
 
     </LinearLayout>
 

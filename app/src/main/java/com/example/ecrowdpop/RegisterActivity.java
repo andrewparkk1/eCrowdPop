@@ -41,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressDialog pd;
 
     private TextView usernameStatus;
-    private Button usernameCheck;
+//    private Button usernameCheck;
 
     private static int usernameFlag = 0;
 
@@ -58,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
         txt_login = findViewById(R.id.txt_login);
 
         usernameStatus = findViewById(R.id.availability_username);
-        usernameCheck = findViewById(R.id.check_username);
+//        usernameCheck = findViewById(R.id.check_username);
 
         auth = FirebaseAuth.getInstance();
 
@@ -92,12 +92,12 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        usernameCheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkUsernameAvailability();
-            }
-        });
+//        usernameCheck.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                checkUsernameAvailability();
+//            }
+//        });
 
     }
 

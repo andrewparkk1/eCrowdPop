@@ -21,22 +21,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-
-
-<!--                <ImageView-->
-<!--                    android:layout_width="180dp"-->
-<!--                    android:layout_height="35dp"-->
-<!--                    android:layout_alignParentStart="true"-->
-<!--                    android:layout_marginLeft="-20dp"-->
-<!--                    android:src="@drawable/logo" />-->
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:maxLines="1"
                     android:textStyle="bold"
-                    android:id="@+id/fullname"
+                    android:id="@+id/username"
                     android:textColor="@color/colorPrimaryDark"/>
 
                 <ImageView
@@ -66,30 +57,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:id="@+id/top_bar"
                 android:padding="16dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_gravity="center"
                     android:id="@+id/image_profile"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:id="@+id/username"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_gravity="center"
-                    android:padding="5dp"
-                    android:textColor="@color/colorPrimaryDark"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     android:orientation="vertical"
                     android:paddingLeft="20dp"
                     android:paddingRight="4dp">
@@ -98,7 +77,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:padding="10dp"
                         android:orientation="horizontal">
 
                         <LinearLayout
@@ -122,15 +100,6 @@
 
                         </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="50dp"
-                            android:text="I"/>
-
-
-
-
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -152,13 +121,6 @@
                                 android:text="followers"/>
 
                         </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="50dp"
-
-                            android:text="I"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -200,6 +162,15 @@
                 android:padding="12dp"
                 android:id="@+id/mid_bar"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:id="@+id/fullname"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimaryDark"/>
 
                 <TextView
                     android:layout_width="wrap_content"

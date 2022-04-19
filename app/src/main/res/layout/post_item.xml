@@ -64,7 +64,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:id="@+id/like"
-                android:src="@drawable/ic_heart"/>
+                android:src="@drawable/ic_favorite"/>
 
             <ImageView
                 android:layout_width="30dp"
