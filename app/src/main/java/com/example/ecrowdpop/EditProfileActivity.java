@@ -44,7 +44,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private ImageView image_profile;
     private TextView save;
     private TextView tv_change;
-    private MaterialEditText fullname;
+    private MaterialEditText category;
     private MaterialEditText username;
     private MaterialEditText bio;
 
@@ -63,7 +63,7 @@ public class EditProfileActivity extends AppCompatActivity {
         image_profile = findViewById(R.id.image_profile);
         save = findViewById(R.id.save);
         tv_change = findViewById(R.id.tv_change);
-        fullname = findViewById(R.id.fullname);
+        category = findViewById(R.id.category);
         username = findViewById(R.id.username);
 //        username.setEnabled(false);
         bio = findViewById(R.id.bio);
@@ -78,7 +78,7 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                fullname.setText(user.getFullname());
+                category.setText(user.getCategory());
                 username.setText(user.getUsername());
                 bio.setText(user.getBio());
                 Picasso.get().load(user.getImageurl()).placeholder(R.drawable.ic_person).into(image_profile);
@@ -118,7 +118,7 @@ public class EditProfileActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateProfile(fullname.getText().toString() ,
+                updateProfile(category.getText().toString() ,
                         username.getText().toString() ,
                         bio.getText().toString());
             }

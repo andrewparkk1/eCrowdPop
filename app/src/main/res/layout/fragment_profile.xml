@@ -36,7 +36,7 @@
                     android:textSize="18sp"
                     android:maxLines="1"
                     android:textStyle="bold"
-                    android:id="@+id/fullname"
+                    android:id="@+id/category"
                     android:textColor="@color/colorPrimaryDark"/>
 
                 <ImageView

@@ -5,10 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,9 +33,10 @@ import com.example.ecrowdpop.Model.User;
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
+    private Spinner spinner;
 
     private EditText username;
-    private EditText fullname;
+    private EditText category;
     private EditText email;
     private EditText password;
     private Button register;
@@ -51,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         username = findViewById(R.id.username);
-        fullname = findViewById(R.id.fullname);
+        category = findViewById(R.id.category);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         register = findViewById(R.id.register);
@@ -77,17 +83,17 @@ public class RegisterActivity extends AppCompatActivity {
                 pd.show();
 
                 String str_username = username.getText().toString();
-                String str_fullname = fullname.getText().toString();
+                String str_category = category.getText().toString();
                 String str_email = email.getText().toString();
                 String str_password = password.getText().toString();
 
-                if (TextUtils.isEmpty(str_username) || TextUtils.isEmpty(str_fullname) ||
+                if (TextUtils.isEmpty(str_username) || TextUtils.isEmpty(str_category) ||
                     TextUtils.isEmpty(str_email) || TextUtils.isEmpty(str_password)){
                     Toast.makeText(RegisterActivity.this, "Empty credential$!", Toast.LENGTH_SHORT).show();
                 } else if (str_password.length() < 6){
                     Toast.makeText(RegisterActivity.this, "Password too short!", Toast.LENGTH_SHORT).show();
                 } else {
-                    register(str_username , str_fullname , str_email , str_password);
+                    register(str_username , str_category , str_email , str_password);
                 }
             }
         });
@@ -98,6 +104,79 @@ public class RegisterActivity extends AppCompatActivity {
 //                checkUsernameAvailability();
 //            }
 //        });
+
+        spinner = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this, R.array.widgets, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
+        int i = 0;
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String item = adapter.getItem(i).toString();
+
+
+                if (item.equals("Marketing/Advertisement")) {
+                    category.setText("Marketing/Advertisement");
+                }
+                if (item.equals("Retail/ECommerce")) {
+                    category.setText("Retail/ECommerce");
+                }
+                if (item.equals("Science")) {
+                    category.setText("Science");
+                }
+                if (item.equals("Consumer Technology")) {
+                    category.setText("Consumer Technology");
+                }
+                if (item.equals("Games")) {
+                    category.setText("Games");
+                }
+
+                if (item.equals("Healthcare")) {
+                    category.setText("Healthcare");
+                }
+                if (item.equals("Media")) {
+                    category.setText("Media");
+                }
+                if (item.equals("Art/Style")) {
+                    category.setText("Art/Style");
+                }
+                if (item.equals("Manufacturing/Industry")) {
+                    category.setText("Manufacturing/Industry");
+                }
+
+                if (item.equals("Social Impact")) {
+                    category.setText("Social Impact");
+                }
+                if (item.equals("Social Media")) {
+                    category.setText("Social Media");
+                }
+                if (item.equals("Education")) {
+                    category.setText("Education");
+                }
+
+                if (item.equals("Energy")) {
+                    category.setText("Energy");
+                }
+                if (item.equals("Education")) {
+                    category.setText("Education");
+                }
+
+                if (item.equals("Food/Drink")) {
+                    category.setText("Food/Drink");
+                }
+
+                if (item.equals("Finance")) {
+                    category.setText("Finance");
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
     }
 
@@ -131,7 +210,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void register(final String username, final String fullname , String email , String password) {
+    private void register(final String username, final String category , String email , String password) {
         if (usernameFlag == 0) {
             auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                 @Override
@@ -144,8 +223,9 @@ public class RegisterActivity extends AppCompatActivity {
 
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put("id", userid);
-                        hashMap.put("username", username.toLowerCase());
-                        hashMap.put("fullname", fullname);
+//                        hashMap.put("username", username.toLowerCase());
+                        hashMap.put("username", username);
+                        hashMap.put("category", category);
                         hashMap.put("bio", "");
                         hashMap.put("imageurl", "default");
 

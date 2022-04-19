@@ -2,4 +2,22 @@
     <string name="app_name">eCrowdPop</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="widgets">
+        <item>Marketing/Advertisement</item>
+        <item>Retail/ECommerce</item>
+        <item>Science</item>
+        <item>Consumer Technology</item>
+        <item>Games</item>
+        <item>Healthcare</item>
+        <item>Media</item>
+        <item>Art/Style</item>
+        <item>Manufacturing/Industry</item>
+        <item>Social Impact</item>
+        <item>Social Media</item>
+        <item>Education</item>
+        <item>Energy</item>
+        <item>Food/Drink</item>
+        <item>Finance</item>
+
+    </string-array>
 </resources>

@@ -357,7 +357,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 User user = dataSnapshot.getValue(User.class);
                 Picasso.get().load(user.getImageurl()).placeholder(R.drawable.ic_person).into(image_profile);
                 username.setText(user.getUsername());
-                publisher.setText(user.getFullname());
+                publisher.setText(user.getCategory());
             }
 
             @Override

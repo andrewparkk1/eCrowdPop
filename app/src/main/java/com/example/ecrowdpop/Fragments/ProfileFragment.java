@@ -47,7 +47,7 @@ public class ProfileFragment extends Fragment {
     private TextView posts;
     private TextView followers;
     private TextView following;
-    private TextView fullname;
+    private TextView category;
     private TextView bio;
     private TextView username;
     private ImageButton my_fotos;
@@ -80,7 +80,7 @@ public class ProfileFragment extends Fragment {
         posts = view.findViewById(R.id.posts);
         followers = view.findViewById(R.id.followers);
         following = view.findViewById(R.id.following);
-        fullname = view.findViewById(R.id.fullname);
+        category = view.findViewById(R.id.category);
         bio = view.findViewById(R.id.bio);
         my_fotos = view.findViewById(R.id.my_fotos);
         username = view.findViewById(R.id.username);
@@ -221,7 +221,7 @@ public class ProfileFragment extends Fragment {
 
                 Picasso.get().load(user.getImageurl()).placeholder(R.drawable.ic_person).into(image_profile);
                 username.setText(user.getUsername());
-                fullname.setText(user.getFullname());
+                category.setText(user.getCategory());
                 bio.setText(user.getBio());
             }
 
