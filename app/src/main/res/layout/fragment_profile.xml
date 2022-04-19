@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.ProfileFragment">
+    tools:context=".Fragments.ProfileFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -198,7 +198,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:id="@+id/my_fotos"
-                    android:src="@drawable/ic_person"
+                    android:src="@drawable/ic_apps"
                     style="?android:attr/buttonBarButtonStyle"/>
 
                 <ImageButton
@@ -206,7 +206,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:id="@+id/saved_fotos"
-                    android:src="@drawable/ic_person"
+                    android:src="@drawable/ic_bookmarkborder"
                     style="?android:attr/buttonBarButtonStyle"/>
 
             </LinearLayout>

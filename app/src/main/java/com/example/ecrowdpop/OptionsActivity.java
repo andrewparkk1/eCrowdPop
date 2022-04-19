@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class OptionsActivity extends AppCompatActivity {
+public class  OptionsActivity extends AppCompatActivity {
 
     private TextView logout;
     private TextView settings;
