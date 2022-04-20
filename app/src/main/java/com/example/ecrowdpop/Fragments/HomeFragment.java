@@ -37,7 +37,6 @@ public class HomeFragment extends Fragment {
 //    private List<Story> storyList;
 
     private List<String> followingList;
-
     private ProgressBar progressBar;
 
     @Override
@@ -83,7 +82,7 @@ public class HomeFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     followingList.add(snapshot.getKey());
                 }
-
+                followingList.add(FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).getKey());
                 readPosts();
 //                readStory();
             }

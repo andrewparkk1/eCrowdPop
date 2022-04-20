@@ -193,47 +193,47 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             }
         });
 
-        holder.more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PopupMenu popupMenu = new PopupMenu(mContext , v);
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()){
-                            case R.id.edit :
-                                editPost(post.getPostid());
-                                return true;
-
-                            case R.id.delete :
-                                FirebaseDatabase.getInstance().getReference("Posts")
-                                        .child(post.getPostid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()){
-                                            Toast.makeText(mContext, "Deleted!", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-                                return true;
-
-                            case R.id.report :
-                                Toast.makeText(mContext, "Report Sent!", Toast.LENGTH_SHORT).show();
-                                return true;
-
-                            default:
-                                return false;
-                        }
-                    }
-                });
-                popupMenu.inflate(R.menu.post_menu);
-                if (!post.getPublisher().equals(firebaseUser.getUid())){
-                    popupMenu.getMenu().findItem(R.id.edit).setVisible(false);
-                    popupMenu.getMenu().findItem(R.id.delete).setVisible(false);
-                }
-                popupMenu.show();
-            }
-        });
+//        holder.more.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                PopupMenu popupMenu = new PopupMenu(mContext , v);
+//                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+//                    @Override
+//                    public boolean onMenuItemClick(MenuItem item) {
+//                        switch (item.getItemId()){
+//                            case R.id.edit :
+//                                editPost(post.getPostid());
+//                                return true;
+//
+//                            case R.id.delete :
+//                                FirebaseDatabase.getInstance().getReference("Posts")
+//                                        .child(post.getPostid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                    @Override
+//                                    public void onComplete(@NonNull Task<Void> task) {
+//                                        if (task.isSuccessful()){
+//                                            Toast.makeText(mContext, "Deleted!", Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    }
+//                                });
+//                                return true;
+//
+//                            case R.id.report :
+//                                Toast.makeText(mContext, "Report Sent!", Toast.LENGTH_SHORT).show();
+//                                return true;
+//
+//                            default:
+//                                return false;
+//                        }
+//                    }
+//                });
+//                popupMenu.inflate(R.menu.post_menu);
+//                if (!post.getPublisher().equals(firebaseUser.getUid())){
+//                    popupMenu.getMenu().findItem(R.id.edit).setVisible(false);
+//                    popupMenu.getMenu().findItem(R.id.delete).setVisible(false);
+//                }
+//                popupMenu.show();
+//            }
+//        });
 
     }
 
@@ -249,7 +249,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public ImageView like;
         public ImageView comment;
         public ImageView save;
-        public ImageView more;
+//        public ImageView more;
 
         public TextView username;
         public TextView likes;
@@ -265,7 +265,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             like = itemView.findViewById(R.id.like);
             comment = itemView.findViewById(R.id.comment);
             save = itemView.findViewById(R.id.save);
-            more = itemView.findViewById(R.id.more);
+//            more = itemView.findViewById(R.id.more);
 
             username = itemView.findViewById(R.id.username);
             likes = itemView.findViewById(R.id.likes);
