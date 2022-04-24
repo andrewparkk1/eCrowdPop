@@ -21,7 +21,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.example.ecrowdpop.Adapter.PostAdapter;
 import com.example.ecrowdpop.Model.Post;
-import com.example.ecrowdpop.Model.Story;
 import com.example.ecrowdpop.R;
 
 import java.util.ArrayList;

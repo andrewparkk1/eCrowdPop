@@ -297,9 +297,7 @@ public class ProfileFragment extends Fragment {
                         i++;
                     }
                 }
-
                 posts.setText("" + i);
-
             }
 
             @Override
