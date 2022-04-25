@@ -133,7 +133,6 @@ public class RegisterActivity extends AppCompatActivity {
                 if (item.equals("Games")) {
                     category.setText("Games");
                 }
-
                 if (item.equals("Healthcare")) {
                     category.setText("Healthcare");
                 }
@@ -146,7 +145,6 @@ public class RegisterActivity extends AppCompatActivity {
                 if (item.equals("Manufacturing/Industry")) {
                     category.setText("Manufacturing/Industry");
                 }
-
                 if (item.equals("Social Impact")) {
                     category.setText("Social Impact");
                 }
@@ -156,18 +154,12 @@ public class RegisterActivity extends AppCompatActivity {
                 if (item.equals("Education")) {
                     category.setText("Education");
                 }
-
                 if (item.equals("Energy")) {
                     category.setText("Energy");
                 }
-                if (item.equals("Education")) {
-                    category.setText("Education");
-                }
-
                 if (item.equals("Food/Drink")) {
                     category.setText("Food/Drink");
                 }
-
                 if (item.equals("Finance")) {
                     category.setText("Finance");
                 }

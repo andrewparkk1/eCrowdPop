@@ -42,11 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container , new ProfileFragment()).commit();
         } else {
-
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container , new HomeFragment()).commit();
-
         }
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =

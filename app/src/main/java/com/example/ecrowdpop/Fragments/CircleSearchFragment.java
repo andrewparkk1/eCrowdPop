@@ -54,12 +54,14 @@ import com.example.ecrowdpop.Model.HashTag;
 import com.example.ecrowdpop.Model.User;
 import com.example.ecrowdpop.R;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class CircleSearchFragment extends Fragment {
-    TextView ma;
+    TextView ma, re, sc, ct, ga, hc, md, as, mi, si, sm, ed, en, fd, f;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,41 +70,81 @@ public class CircleSearchFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_circle_search, container, false);
 
         ma = view.findViewById(R.id.marketingadvertisement);
+        re = view.findViewById(R.id.retailecommerce);
+        sc = view.findViewById(R.id.science);
+        ct = view.findViewById(R.id.consumertechnology);
+        ga = view.findViewById(R.id.games);
+        hc = view.findViewById(R.id.healthcare);
+        md = view.findViewById(R.id.media);
+        as = view.findViewById(R.id.artstyle);
+        mi = view.findViewById(R.id.manufacturingindustry);
+        si = view.findViewById(R.id.socialimpact);
+        sm = view.findViewById(R.id.socialmedia);
+        ed = view.findViewById(R.id.education);
+        en = view.findViewById(R.id.energy);
+        fd = view.findViewById(R.id.fooddrink);
+        f = view.findViewById(R.id.finance);
 
-//        ViewGroup.LayoutParams layoutParams = ma.getLayoutParams();
-//        layoutParams.width = 500;
-//        layoutParams.height = 500;
-//        ma.setLayoutParams(layoutParams);
+        randomShape(ma);
+        randomShape(re);
+        randomShape(sc);
+        randomShape(ct);
+        randomShape(ga);
+        randomShape(hc);
+        randomShape(md);
+        randomShape(as);
+        randomShape(mi);
+        randomShape(si);
+        randomShape(sm);
+        randomShape(ed);
+        randomShape(en);
+        randomShape(fd);
+        randomShape(f);
 
-
-//        ma.setOnClickListener(new View.OnClickListener() {
-//            long clicked = 0;
-//
-//            @Override
-//            public void onClick(View v) {
-////                long mLastClickTime = 0;
-////                // mis-clicking prevention, using threshold of 1000 ms
-////                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
-////                    clicked++;
-////                    return;
-////                }
-////                mLastClickTime = SystemClock.elapsedRealtime();
-////                if (clicked == 0) {
-////                    ma.setText("hola");
-////                } else {
-////                    ma.setText("asdf");
-////                }
-////                startActivity(new Intent(getContext() , SearchFragment.class));
-//
-//            }
-//        });
-//
-
-
-
+        click(ma, ma.getText().toString());
+        click(re, re.getText().toString());
+        click(sc, sc.getText().toString());
+        click(ct, ct.getText().toString());
+        click(ga, ga.getText().toString());
+        click(hc, hc.getText().toString());
+        click(md, md.getText().toString());
+        click(as, as.getText().toString());
+        click(mi, mi.getText().toString());
+        click(si, si.getText().toString());
+        click(sm, sm.getText().toString());
+        click(ed, ed.getText().toString());
+        click(en, en.getText().toString());
+        click(fd, fd.getText().toString());
+        click(f, f.getText().toString());
 
 
         // Inflate the layout for this fragment
         return view;
+    }
+
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
+
+    public void randomShape(View view) {
+        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+        double d = ((Math.random() * (500 - 100)) + 100);
+        layoutParams.width = (int) d;
+        layoutParams.height = (int) d;
+        view.setLayoutParams(layoutParams);
+    }
+
+    public void click(View view, String text) {
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = getContext().getSharedPreferences("PREFS" , Context.MODE_PRIVATE).edit();
+                editor.putString("category", text);
+                editor.apply();
+                ((FragmentActivity)getContext()).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new SearchFragment()).commit();
+            }
+        });
     }
 }
