@@ -55,12 +55,12 @@ public class ProfileFragment extends Fragment {
     private ImageButton my_fotos;
     private ImageButton saved_fotos;
     private ImageButton liked_fotos;
+    private ImageButton saved_ppl;
     private Button editprofile;
 
     private RecyclerView recyclerView;
     private MyFotoAdapter myFotoAdapter;
     private List<Post> postList;
-
 
     private List<String> mySaves;
     private RecyclerView recyclerView_saves;
@@ -71,6 +71,14 @@ public class ProfileFragment extends Fragment {
     private RecyclerView recyclerView_likes;
     private MyFotoAdapter myFotoAdapter_likes;
     private List<Post> postList_likes;
+
+    private String id;
+    private String title;
+    private List<String> idList;
+    private RecyclerView recyclerView_following;
+    private UserAdapter userAdapter;
+    private List<User> userList;
+
 
     private FirebaseUser firebaseUser;
     String profileid;
@@ -96,6 +104,7 @@ public class ProfileFragment extends Fragment {
         saved_fotos = view.findViewById(R.id.saved_fotos);
         editprofile = view.findViewById(R.id.edit_profile);
         liked_fotos = view.findViewById(R.id.liked_fotos);
+        saved_ppl = view.findViewById(R.id.saved_ppl);
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -122,9 +131,23 @@ public class ProfileFragment extends Fragment {
         myFotoAdapter_likes = new MyFotoAdapter(getContext() , postList_likes);
         recyclerView_likes.setAdapter(myFotoAdapter_likes);
 
+
+
+        recyclerView_following = view.findViewById(R.id.recycler_view_following);
+        recyclerView_following.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager3 = new GridLayoutManager(getContext() , 1);
+        recyclerView_following.setLayoutManager(linearLayoutManager3);
+        userList = new ArrayList<>();
+        userAdapter = new UserAdapter(getContext() , userList , true);
+        recyclerView_following.setAdapter(userAdapter);
+        idList = new ArrayList<>();
+
+
         recyclerView.setVisibility(View.VISIBLE);
         recyclerView_saves.setVisibility(View.GONE);
         recyclerView_likes.setVisibility(View.GONE);
+        recyclerView_following.setVisibility(View.GONE);
+
 
 
         userInfo();
@@ -133,6 +156,8 @@ public class ProfileFragment extends Fragment {
         myFotos();
         mysaves();
         mylikes();
+        getFollowing();
+
 
         if (profileid.equals(firebaseUser.getUid())){
             editprofile.setText("Edit Profile");
@@ -140,6 +165,8 @@ public class ProfileFragment extends Fragment {
             checkFollow();
             saved_fotos.setVisibility(View.GONE);
             liked_fotos.setVisibility(View.GONE);
+            saved_ppl.setVisibility(View.GONE);
+            options.setVisibility(View.GONE);
         }
 
         editprofile.setOnClickListener(new View.OnClickListener() {
@@ -178,37 +205,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        my_fotos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                recyclerView.setVisibility(View.VISIBLE);
-                recyclerView_saves.setVisibility(View.GONE);
-                recyclerView_likes.setVisibility(View.GONE);
-
-
-            }
-        });
-
-        liked_fotos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                recyclerView.setVisibility(View.GONE);
-                recyclerView_saves.setVisibility(View.GONE);
-                recyclerView_likes.setVisibility(View.VISIBLE);
-
-            }
-        });
-
-        saved_fotos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                recyclerView.setVisibility(View.GONE);
-                recyclerView_saves.setVisibility(View.VISIBLE);
-                recyclerView_likes.setVisibility(View.GONE);
-
-            }
-        });
-
         followers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,7 +214,6 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
         following.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -229,7 +224,100 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+
+
+
+        my_fotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.setVisibility(View.VISIBLE);
+                recyclerView_saves.setVisibility(View.GONE);
+                recyclerView_likes.setVisibility(View.GONE);
+                recyclerView_following.setVisibility(View.GONE);
+            }
+        });
+
+        liked_fotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerView.setVisibility(View.GONE);
+                recyclerView_saves.setVisibility(View.GONE);
+                recyclerView_likes.setVisibility(View.VISIBLE);
+                recyclerView_following.setVisibility(View.GONE);
+            }
+        });
+
+        saved_fotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.setVisibility(View.GONE);
+                recyclerView_saves.setVisibility(View.VISIBLE);
+                recyclerView_likes.setVisibility(View.GONE);
+                recyclerView_following.setVisibility(View.GONE);
+            }
+        });
+
+        saved_ppl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView.setVisibility(View.GONE);
+                recyclerView_saves.setVisibility(View.GONE);
+                recyclerView_likes.setVisibility(View.GONE);
+                recyclerView_following.setVisibility(View.VISIBLE);
+            }
+        });
+
+
         return view;
+    }
+
+    private void getFollowing() {
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow").child(firebaseUser.getUid()).child("following");
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                idList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    idList.add(snapshot.getKey());
+                }
+                showUsers();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void showUsers () {
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                userList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    User user = snapshot.getValue(User.class);
+                    for (String id : idList){
+                        assert user != null;
+                        if (user.getId().equals(id))
+                            userList.add(user);
+                    }
+                }
+
+                userAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private void addNotifications() {

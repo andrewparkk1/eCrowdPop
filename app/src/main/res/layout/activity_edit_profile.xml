@@ -81,13 +81,38 @@
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"/>
 
+<!--        <EditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/edit_text_background"-->
+<!--            android:hint="Full Name"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:padding="10dp"-->
+<!--            android:id="@+id/cat"-->
+<!--            android:visibility="gone"/>-->
+
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/category"
             android:hint="Category"
             android:layout_marginTop="20dp"
-            app:met_floatingLabel="normal"/>
+            app:met_floatingLabel="normal"
+            android:visibility="invisible"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:paddingBottom="12dp"/>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_background"
+            />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"

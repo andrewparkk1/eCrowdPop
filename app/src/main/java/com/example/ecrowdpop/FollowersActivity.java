@@ -25,9 +25,7 @@ public class FollowersActivity extends AppCompatActivity {
 
     private String id;
     private String title;
-
     private List<String> idList;
-
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     private List<User> userList;

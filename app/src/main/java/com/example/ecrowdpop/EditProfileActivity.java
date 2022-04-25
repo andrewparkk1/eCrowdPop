@@ -12,7 +12,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +49,8 @@ public class EditProfileActivity extends AppCompatActivity {
     private TextView save;
     private TextView tv_change;
     private MaterialEditText category;
+    private Spinner spinner;
+
     private MaterialEditText username;
     private MaterialEditText bio;
 
@@ -65,8 +71,71 @@ public class EditProfileActivity extends AppCompatActivity {
         tv_change = findViewById(R.id.tv_change);
         category = findViewById(R.id.category);
         username = findViewById(R.id.username);
-//        username.setEnabled(false);
         bio = findViewById(R.id.bio);
+
+        spinner = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this, R.array.widgets, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
+        int i = 0;
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String item = adapter.getItem(i).toString();
+
+                if (item.equals("Marketing/Advertisement")) {
+                    category.setText("Marketing/Advertisement");
+                }
+                if (item.equals("Retail/ECommerce")) {
+                    category.setText("Retail/ECommerce");
+                }
+                if (item.equals("Science")) {
+                    category.setText("Science");
+                }
+                if (item.equals("Consumer Technology")) {
+                    category.setText("Consumer Technology");
+                }
+                if (item.equals("Games")) {
+                    category.setText("Games");
+                }
+                if (item.equals("Healthcare")) {
+                    category.setText("Healthcare");
+                }
+                if (item.equals("Media")) {
+                    category.setText("Media");
+                }
+                if (item.equals("Art/Style")) {
+                    category.setText("Art/Style");
+                }
+                if (item.equals("Manufacturing/Industry")) {
+                    category.setText("Manufacturing/Industry");
+                }
+                if (item.equals("Social Impact")) {
+                    category.setText("Social Impact");
+                }
+                if (item.equals("Social Media")) {
+                    category.setText("Social Media");
+                }
+                if (item.equals("Education")) {
+                    category.setText("Education");
+                }
+                if (item.equals("Energy")) {
+                    category.setText("Energy");
+                }
+                if (item.equals("Food/Drink")) {
+                    category.setText("Food/Drink");
+                }
+                if (item.equals("Finance")) {
+                    category.setText("Finance");
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+
+            }
+        });
+
 
 //        Toast.makeText(EditProfileActivity.this, "You can't change your username! Contact admin.", Toast.LENGTH_SHORT).show();
 
@@ -76,8 +145,21 @@ public class EditProfileActivity extends AppCompatActivity {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
+            public String toString() {
+                return "$classname{}";
+            }
+
+            @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
+                assert user != null;
+
+                String myString = user.getCategory(); //the value you want the position for
+                ArrayAdapter myAdap = (ArrayAdapter) spinner.getAdapter(); //cast to an ArrayAdapter
+                int spinnerPosition = myAdap.getPosition(myString);
+                spinner.setSelection(spinnerPosition);
+
+
                 category.setText(user.getCategory());
                 username.setText(user.getUsername());
                 bio.setText(user.getBio());
@@ -123,6 +205,8 @@ public class EditProfileActivity extends AppCompatActivity {
                         bio.getText().toString());
             }
         });
+
+
     }
 
     private void updateProfile(String fullname, String username, String bio) {
@@ -130,10 +214,9 @@ public class EditProfileActivity extends AppCompatActivity {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
         HashMap<String , Object> hashMap = new HashMap<>();
-        hashMap.put("fullname" , fullname);
+        hashMap.put("category" , fullname);
         hashMap.put("username" , username);
         hashMap.put("bio" , bio);
-
         reference.updateChildren(hashMap);
 
     }
