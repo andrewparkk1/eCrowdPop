@@ -231,6 +231,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/liked_fotos"
+                    android:src="@drawable/ic_favoriteborder"
+                    style="?android:attr/buttonBarButtonStyle"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:id="@+id/saved_fotos"
                     android:src="@drawable/ic_bookmarkborder"
                     style="?android:attr/buttonBarButtonStyle"/>
@@ -241,6 +249,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/recycler_view"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler_view_likes"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"

@@ -43,10 +43,13 @@ import java.util.List;
 public class SearchFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private RecyclerView recyclerViewTags;
-    private TagAdapter tagAdapter;
     private UserAdapter userAdapter;
     private List<User> mUsers;
+
+
+    private RecyclerView recyclerViewTags;
+    private TagAdapter tagAdapter;
+
 
     private HashSet<Category> mCategories;
 

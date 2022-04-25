@@ -18,7 +18,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.ecrowdpop.Adapter.UserAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -52,16 +54,23 @@ public class ProfileFragment extends Fragment {
     private TextView username;
     private ImageButton my_fotos;
     private ImageButton saved_fotos;
+    private ImageButton liked_fotos;
     private Button editprofile;
 
     private RecyclerView recyclerView;
     private MyFotoAdapter myFotoAdapter;
     private List<Post> postList;
 
+
     private List<String> mySaves;
     private RecyclerView recyclerView_saves;
     private MyFotoAdapter myFotoAdapter_saves;
     private List<Post> postList_saves;
+
+    private List<String> myLikes;
+    private RecyclerView recyclerView_likes;
+    private MyFotoAdapter myFotoAdapter_likes;
+    private List<Post> postList_likes;
 
     private FirebaseUser firebaseUser;
     String profileid;
@@ -86,6 +95,7 @@ public class ProfileFragment extends Fragment {
         username = view.findViewById(R.id.username);
         saved_fotos = view.findViewById(R.id.saved_fotos);
         editprofile = view.findViewById(R.id.edit_profile);
+        liked_fotos = view.findViewById(R.id.liked_fotos);
 
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -103,14 +113,26 @@ public class ProfileFragment extends Fragment {
         myFotoAdapter_saves = new MyFotoAdapter(getContext() , postList_saves);
         recyclerView_saves.setAdapter(myFotoAdapter_saves);
 
+
+        recyclerView_likes = view.findViewById(R.id.recycler_view_likes);
+        recyclerView_likes.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager2 = new GridLayoutManager(getContext() , 3);
+        recyclerView_likes.setLayoutManager(linearLayoutManager2);
+        postList_likes = new ArrayList<>();
+        myFotoAdapter_likes = new MyFotoAdapter(getContext() , postList_likes);
+        recyclerView_likes.setAdapter(myFotoAdapter_likes);
+
         recyclerView.setVisibility(View.VISIBLE);
         recyclerView_saves.setVisibility(View.GONE);
+        recyclerView_likes.setVisibility(View.GONE);
+
 
         userInfo();
         getFollowers();
         getNrPosts();
         myFotos();
         mysaves();
+        mylikes();
 
         if (profileid.equals(firebaseUser.getUid())){
             editprofile.setText("Edit Profile");
@@ -160,6 +182,18 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 recyclerView.setVisibility(View.VISIBLE);
                 recyclerView_saves.setVisibility(View.GONE);
+                recyclerView_likes.setVisibility(View.GONE);
+
+
+            }
+        });
+
+        liked_fotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerView.setVisibility(View.GONE);
+                recyclerView_saves.setVisibility(View.GONE);
+                recyclerView_likes.setVisibility(View.VISIBLE);
 
             }
         });
@@ -169,6 +203,8 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 recyclerView.setVisibility(View.GONE);
                 recyclerView_saves.setVisibility(View.VISIBLE);
+                recyclerView_likes.setVisibility(View.GONE);
+
             }
         });
 
@@ -371,6 +407,72 @@ public class ProfileFragment extends Fragment {
                 }
 
                 myFotoAdapter_saves.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+    private void mylikes() {
+        myLikes = new ArrayList<>();
+
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Likes").child(firebaseUser.getUid());
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Likes");
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    for (DataSnapshot s: snapshot.getChildren()) {
+//                        Toast.makeText(getContext(), snapshot.getKey().toString(), Toast.LENGTH_LONG).show();
+
+//                        Toast.makeText(getContext(), s.getKey().toString(), Toast.LENGTH_LONG).show();
+                        if (s.getKey().toString().equals(firebaseUser.getUid())) {
+                            myLikes.add(snapshot.getKey());
+                        }
+                    }
+
+//                    Toast.makeText(getContext(), snapshot.toString(), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getContext(), dataSnapshot.child(firebaseUser.getUid()).getKey().toString(), Toast.LENGTH_LONG).show();
+//                    if (dataSnapshot.child(firebaseUser.getUid()).getKey().toString().equals(firebaseUser.getUid())) {
+//                        myLikes.add(snapshot.getKey());
+//                    }
+//                    if (dataSnapshot.child(firebaseUser.getUid()).exists()) {
+//                    }
+                }
+
+                readLikes();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void readLikes() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                postList_likes.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Post post = snapshot.getValue(Post.class);
+
+                    for (String id : myLikes){
+                        if (post.getPostid().equals(id)){
+                            postList_likes.add(post);
+                        }
+                    }
+                }
+
+                myFotoAdapter_likes.notifyDataSetChanged();
             }
 
             @Override
