@@ -139,6 +139,7 @@ public class ProfileFragment extends Fragment {
         } else {
             checkFollow();
             saved_fotos.setVisibility(View.GONE);
+            liked_fotos.setVisibility(View.GONE);
         }
 
         editprofile.setOnClickListener(new View.OnClickListener() {
@@ -256,7 +257,7 @@ public class ProfileFragment extends Fragment {
                 User user = dataSnapshot.getValue(User.class);
 
                 Picasso.get().load(user.getImageurl()).placeholder(R.drawable.ic_person).into(image_profile);
-                username.setText(user.getUsername());
+                username.setText("@" + user.getUsername());
                 category.setText(user.getCategory());
                 bio.setText(user.getBio());
             }

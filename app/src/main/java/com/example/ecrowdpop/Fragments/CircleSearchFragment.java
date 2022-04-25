@@ -62,8 +62,7 @@ import java.util.List;
 
 
 public class CircleSearchFragment extends Fragment {
-    TextView ma, re, sc, ct, ga, hc, md, as, mi, si, sm, ed, en, fd, f;
-    Button b;
+    TextView ma, re, sc, ct, ga, hc, md, as, mi, si, sm, ed, en, fd, f, all;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,7 +85,8 @@ public class CircleSearchFragment extends Fragment {
         en = view.findViewById(R.id.energy);
         fd = view.findViewById(R.id.fooddrink);
         f = view.findViewById(R.id.finance);
-        b = view.findViewById(R.id.button);
+        all = view.findViewById(R.id.all);
+//        b = view.findViewById(R.id.button);
 
 //        randomShape(ma);
 //        randomShape(re);
@@ -119,7 +119,7 @@ public class CircleSearchFragment extends Fragment {
         click(en, en.getText().toString());
         click(fd, fd.getText().toString());
         click(f, f.getText().toString());
-        click(b, "");
+        click(all, "");
 
 
         // Inflate the layout for this fragment

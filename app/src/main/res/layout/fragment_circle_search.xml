@@ -3,37 +3,289 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.SearchFragment">
+    tools:context=".Fragments.CircleSearchFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bar"
+        android:background="?android:attr/windowBackground">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:background="?android:attr/windowBackground">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Categories"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
-    <!--    <com.google.android.material.appbar.AppBarLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:id="@+id/bar"-->
-    <!--        android:background="?android:attr/windowBackground">-->
 
-    <!--        <androidx.appcompat.widget.Toolbar-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:id="@+id/toolbar"-->
-    <!--            android:background="?android:attr/windowBackground">-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/firstcol"
+        android:layout_below="@+id/bar"
+        android:orientation="vertical">
 
-    <!--            <ImageView-->
-    <!--                android:layout_width="wrap_content"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:src="@drawable/ic_search"/>-->
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/marketingadvertisement"
+            android:text="Marketing/Advertisement"
+            />
 
-    <!--            <com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content"-->
-    <!--                android:id="@+id/search_bar"-->
-    <!--                android:background="@android:color/transparent"-->
-    <!--                android:hint="Search..."-->
-    <!--                android:layout_marginStart="15dp" />-->
+        <TextView
+            android:id="@+id/retailecommerce"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Retail/ECommerce"
+            android:textSize="12sp" />
 
-    <!--        </androidx.appcompat.widget.Toolbar>-->
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/science"
+            android:text="Science"
+            />
 
-    <!--    </com.google.android.material.appbar.AppBarLayout>-->
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/consumertechnology"
+            android:text="Consumer Technology"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/firstcol"
+        android:layout_below="@+id/bar"
+
+        android:id="@+id/seccol"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/games"
+            android:text="Games"
+            />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/healthcare"
+            android:text="Healthcare"
+            />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/media"
+            android:text="Media"
+            />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/artstyle"
+            android:text="Art/Style"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/bar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/thirdcol"
+        android:layout_toRightOf="@id/seccol">
+
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/manufacturingindustry"
+            android:text="Manufacturing/Industry"
+            />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/socialimpact"
+            android:text="Social Impact"
+            />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/socialmedia"
+            android:text="Social Media"
+            />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/education"
+            android:text="Education"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/bar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_toRightOf="@id/thirdcol">
+
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/energy"
+            android:text="Energy"
+
+            />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/fooddrink"
+            android:text="Food/Drink"
+            />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/finance"
+            android:text="Finance"
+            />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:padding="8dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:id="@+id/all"
+            android:text="All"
+            />
+
+    </LinearLayout>
+
+
+
+
+    <!--        <com.google.android.material.appbar.AppBarLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/bar"-->
+<!--            android:background="?android:attr/windowBackground">-->
+
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/toolbar"-->
+<!--                android:background="?android:attr/windowBackground">-->
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/ic_search"/>-->
+
+<!--                <com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/search_bar"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:hint="Search..."-->
+<!--                    android:layout_marginStart="15dp" />-->
+
+<!--            </androidx.appcompat.widget.Toolbar>-->
+
+<!--        </com.google.android.material.appbar.AppBarLayout>-->
 
 
 
@@ -52,201 +304,202 @@
     <!--    </androidx.recyclerview.widget.RecyclerView>-->
 
 
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
 
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/marketingadvertisement"
-        android:text="Marketing/Advertisement"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/marketingadvertisement"-->
+<!--        android:text="Marketing/Advertisement"-->
+<!--        />-->
 
-    <TextView
-        android:id="@+id/retailecommerce"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:gravity="center"
-        android:padding="8dp"
-        android:layout_toRightOf="@+id/marketingadvertisement"
-        android:text="Retail/ECommerce"
-        android:textSize="12sp" />
+<!--    <TextView-->
+<!--        android:id="@+id/retailecommerce"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="8dp"-->
+<!--        android:text="Retail/ECommerce"-->
+<!--        android:textSize="12sp" />-->
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/science"
-        android:text="Science"
-        android:layout_toRightOf="@+id/retailecommerce"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/science"-->
+<!--        android:text="Science"-->
+<!--        android:layout_toRightOf="@+id/retailecommerce"-->
+<!--        />-->
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/consumertechnology"
-        android:text="Consumer Technology"
-        android:layout_toEndOf="@+id/science"
-        />
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/games"
-        android:text="Games"
-        android:layout_below="@+id/consumertechnology"
-        />
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/healthcare"
-        android:text="Healthcare"
-        android:layout_below="@+id/retailecommerce"
-        android:layout_toRightOf="@+id/games"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/consumertechnology"-->
+<!--        android:text="Consumer Technology"-->
+<!--        android:layout_toEndOf="@+id/science"-->
+<!--        />-->
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/media"
-        android:text="Media"
-        android:layout_below="@id/science"
-        android:layout_toRightOf="@+id/healthcare"
-        />
+<!--    </LinearLayout>-->
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/artstyle"
-        android:text="Art/Style"
-        android:layout_below="@+id/consumertechnology"
-        android:layout_toRightOf="@id/media"
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/games"-->
+<!--        android:text="Games"-->
+<!--        android:layout_below="@+id/consumertechnology"-->
+<!--        />-->
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/healthcare"-->
+<!--        android:text="Healthcare"-->
+<!--        android:layout_below="@+id/retailecommerce"-->
+<!--        android:layout_toRightOf="@+id/games"-->
+<!--        />-->
 
-        />
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/media"-->
+<!--        android:text="Media"-->
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/manufacturingindustry"
-        android:text="Manufacturing/Industry"
-        android:layout_below="@id/games"
-        />
+<!--        />-->
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/socialimpact"
-        android:text="Social Impact"
-        android:layout_below="@id/healthcare"
-        android:layout_toRightOf="@id/manufacturingindustry"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/artstyle"-->
+<!--        android:text="Art/Style"-->
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/socialmedia"
-        android:text="Social Media"
-        android:layout_below="@id/fooddrink"
-        android:layout_toRightOf="@id/manufacturingindustry"
-        />
+<!--        />-->
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/education"
-        android:text="Education"
-        android:layout_below="@id/media"
-        android:layout_toRightOf="@id/socialimpact"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/manufacturingindustry"-->
+<!--        android:text="Manufacturing/Industry"-->
+<!--        />-->
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/energy"
-        android:text="Energy"
-        android:layout_below="@id/manufacturingindustry"
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/socialimpact"-->
+<!--        android:text="Social Impact"-->
+<!--        />-->
 
-        />
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/socialmedia"-->
+<!--        android:text="Social Media"-->
+<!--        android:layout_below="@id/fooddrink"-->
+<!--        android:layout_toRightOf="@id/manufacturingindustry"-->
+<!--        />-->
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/fooddrink"
-        android:text="Food/Drink"
-        android:layout_below="@id/socialimpact"
-        android:layout_toLeftOf="@id/education"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/education"-->
+<!--        android:text="Education"-->
+<!--        android:layout_below="@id/media"-->
+<!--        android:layout_toRightOf="@id/socialimpact"-->
+<!--        />-->
 
-    <TextView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/text_view_circle"
-        android:padding="8dp"
-        android:gravity="center"
-        android:textSize="12sp"
-        android:id="@+id/finance"
-        android:text="Finance"
-        android:layout_below="@id/education"
-        android:layout_toRightOf="@id/fooddrink"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/energy"-->
+<!--        android:text="Energy"-->
+<!--        android:layout_below="@id/manufacturingindustry"-->
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:layout_below="@id/socialmedia"
-        android:text="All Categories">
-    </Button>
+<!--        />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/fooddrink"-->
+<!--        android:text="Food/Drink"-->
+<!--        android:layout_below="@id/socialimpact"-->
+<!--        android:layout_toLeftOf="@id/education"-->
+<!--        />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:background="@drawable/text_view_circle"-->
+<!--        android:padding="8dp"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="12sp"-->
+<!--        android:id="@+id/finance"-->
+<!--        android:text="Finance"-->
+<!--        android:layout_below="@id/education"-->
+<!--        android:layout_toRightOf="@id/fooddrink"-->
+<!--        />-->
+
+
+<!--    <Button-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/button"-->
+<!--        android:layout_below="@id/socialmedia"-->
+<!--        android:text="button">-->
+<!--    </Button>-->
 
 
 
