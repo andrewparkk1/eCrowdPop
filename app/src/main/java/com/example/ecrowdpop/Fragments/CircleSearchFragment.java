@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.ecrowdpop.CommentsActivity;
@@ -62,6 +63,7 @@ import java.util.List;
 
 public class CircleSearchFragment extends Fragment {
     TextView ma, re, sc, ct, ga, hc, md, as, mi, si, sm, ed, en, fd, f;
+    Button b;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,6 +86,7 @@ public class CircleSearchFragment extends Fragment {
         en = view.findViewById(R.id.energy);
         fd = view.findViewById(R.id.fooddrink);
         f = view.findViewById(R.id.finance);
+        b = view.findViewById(R.id.button);
 
 //        randomShape(ma);
 //        randomShape(re);
@@ -116,6 +119,7 @@ public class CircleSearchFragment extends Fragment {
         click(en, en.getText().toString());
         click(fd, fd.getText().toString());
         click(f, f.getText().toString());
+        click(b, "");
 
 
         // Inflate the layout for this fragment

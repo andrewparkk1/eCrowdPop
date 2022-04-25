@@ -6,61 +6,64 @@
     tools:context=".Fragments.SearchFragment">
 
 
-<!--    <com.google.android.material.appbar.AppBarLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/bar"-->
-<!--        android:background="?android:attr/windowBackground">-->
+    <!--    <com.google.android.material.appbar.AppBarLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:id="@+id/bar"-->
+    <!--        android:background="?android:attr/windowBackground">-->
 
-<!--        <androidx.appcompat.widget.Toolbar-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/toolbar"-->
-<!--            android:background="?android:attr/windowBackground">-->
+    <!--        <androidx.appcompat.widget.Toolbar-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:id="@+id/toolbar"-->
+    <!--            android:background="?android:attr/windowBackground">-->
 
-<!--            <ImageView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/ic_search"/>-->
+    <!--            <ImageView-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:src="@drawable/ic_search"/>-->
 
-<!--            <com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:id="@+id/search_bar"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:hint="Search..."-->
-<!--                android:layout_marginStart="15dp" />-->
+    <!--            <com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:id="@+id/search_bar"-->
+    <!--                android:background="@android:color/transparent"-->
+    <!--                android:hint="Search..."-->
+    <!--                android:layout_marginStart="15dp" />-->
 
-<!--        </androidx.appcompat.widget.Toolbar>-->
+    <!--        </androidx.appcompat.widget.Toolbar>-->
 
-<!--    </com.google.android.material.appbar.AppBarLayout>-->
+    <!--    </com.google.android.material.appbar.AppBarLayout>-->
 
 
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/bar"-->
-<!--        android:id="@+id/recycler_view_users"/>-->
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/bar"-->
+    <!--        android:id="@+id/recycler_view_users"/>-->
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/recycler_view_users"-->
-<!--        android:id="@+id/recycler_view_tags">-->
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/recycler_view_users"-->
+    <!--        android:id="@+id/recycler_view_tags">-->
 
-<!--    </androidx.recyclerview.widget.RecyclerView>-->
+    <!--    </androidx.recyclerview.widget.RecyclerView>-->
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
-            android:id="@+id/marketingadvertisement"
-            android:text="Marketing/Advertisement"
-            />
+
+
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/text_view_circle"
+        android:padding="8dp"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:id="@+id/marketingadvertisement"
+        android:text="Marketing/Advertisement"
+        />
 
     <TextView
         android:id="@+id/retailecommerce"
@@ -237,6 +240,15 @@
         android:layout_toRightOf="@id/fooddrink"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_below="@id/socialmedia"
+        android:text="All Categories">
+    </Button>
+
 
 
 </RelativeLayout>
+

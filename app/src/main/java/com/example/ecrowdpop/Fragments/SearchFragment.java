@@ -191,7 +191,9 @@ public class SearchFragment extends Fragment {
                     mUsers.clear();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                         User user = snapshot.getValue(User.class);
-                        if (user != null && user.getCategory().equals(category)) {
+                        if (category.equals("")) {
+                            mUsers.add(user);
+                        } else if (user != null && user.getCategory().equals(category)) {
                             mUsers.add(user);
                         }
 //                        mUsers.add(user);
