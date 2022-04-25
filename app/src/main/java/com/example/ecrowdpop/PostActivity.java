@@ -84,9 +84,8 @@ public class PostActivity extends AppCompatActivity {
         });
 
         CropImage.activity()
-                .setAspectRatio(1 , 1)
+                .setAspectRatio(9 , 12)
                 .start(PostActivity.this);
-
     }
 
     private void uploadImage() {

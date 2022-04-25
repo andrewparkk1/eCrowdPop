@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ecrowdpop.Model.Notification;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -62,6 +63,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
         holder.username.setText(user.getUsername());
         holder.fullname.setText(user.getCategory());
+        holder.bio.setText(user.getBio());
+
         Picasso.get().load(user.getImageurl()).placeholder(R.drawable.ic_person).into(holder.image_profile);
         isFollowed(user.getId() , holder.btn_follow);
 
@@ -132,6 +135,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
         public TextView fullname;
         public CircleImageView image_profile;
         public Button btn_follow;
+        public TextView bio;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -140,6 +144,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
             fullname = itemView.findViewById(R.id.fullname);
             image_profile = itemView.findViewById(R.id.image_profile);
             btn_follow = itemView.findViewById(R.id.btn_follow);
+            bio = itemView.findViewById(R.id.bio);
         }
     }
 

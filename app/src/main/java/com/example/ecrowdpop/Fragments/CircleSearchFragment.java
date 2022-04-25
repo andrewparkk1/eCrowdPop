@@ -85,21 +85,21 @@ public class CircleSearchFragment extends Fragment {
         fd = view.findViewById(R.id.fooddrink);
         f = view.findViewById(R.id.finance);
 
-        randomShape(ma);
-        randomShape(re);
-        randomShape(sc);
-        randomShape(ct);
-        randomShape(ga);
-        randomShape(hc);
-        randomShape(md);
-        randomShape(as);
-        randomShape(mi);
-        randomShape(si);
-        randomShape(sm);
-        randomShape(ed);
-        randomShape(en);
-        randomShape(fd);
-        randomShape(f);
+//        randomShape(ma);
+//        randomShape(re);
+//        randomShape(sc);
+//        randomShape(ct);
+//        randomShape(ga);
+//        randomShape(hc);
+//        randomShape(md);
+//        randomShape(as);
+//        randomShape(mi);
+//        randomShape(si);
+//        randomShape(sm);
+//        randomShape(ed);
+//        randomShape(en);
+//        randomShape(fd);
+//        randomShape(f);
 
         click(ma, ma.getText().toString());
         click(re, re.getText().toString());
