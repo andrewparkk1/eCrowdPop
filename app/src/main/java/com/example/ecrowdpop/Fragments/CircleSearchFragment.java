@@ -1,5 +1,8 @@
 package com.example.ecrowdpop.Fragments;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,12 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.ecrowdpop.CommentsActivity;
+import com.example.ecrowdpop.EditProfileActivity;
 import com.example.ecrowdpop.R;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -52,7 +58,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class CircleSearchFragment extends Fragment {
     TextView ma;
 
@@ -64,37 +69,40 @@ public class CircleSearchFragment extends Fragment {
 
         ma = view.findViewById(R.id.marketingadvertisement);
 
-        ViewGroup.LayoutParams layoutParams = ma.getLayoutParams();
-        layoutParams.width = 500;
-        layoutParams.height = 500;
-        ma.setLayoutParams(layoutParams);
+//        ViewGroup.LayoutParams layoutParams = ma.getLayoutParams();
+//        layoutParams.width = 500;
+//        layoutParams.height = 500;
+//        ma.setLayoutParams(layoutParams);
 
 
-        ma.setOnClickListener(new View.OnClickListener() {
-            long clicked = 0;
+//        ma.setOnClickListener(new View.OnClickListener() {
+//            long clicked = 0;
+//
+//            @Override
+//            public void onClick(View v) {
+////                long mLastClickTime = 0;
+////                // mis-clicking prevention, using threshold of 1000 ms
+////                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
+////                    clicked++;
+////                    return;
+////                }
+////                mLastClickTime = SystemClock.elapsedRealtime();
+////                if (clicked == 0) {
+////                    ma.setText("hola");
+////                } else {
+////                    ma.setText("asdf");
+////                }
+////                startActivity(new Intent(getContext() , SearchFragment.class));
+//
+//            }
+//        });
+//
 
-            @Override
-            public void onClick(View v) {
-                long mLastClickTime = 0;
-                // mis-clicking prevention, using threshold of 1000 ms
-                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
-                    clicked++;
-                    return;
-                }
-                mLastClickTime = SystemClock.elapsedRealtime();
-                if (clicked == 0) {
-                    ma.setText("hola");
-                } else {
-                    ma.setText("asdf");
-                }
-            }
-        });
+
+
+
 
         // Inflate the layout for this fragment
         return view;
     }
-
-
-
-
 }

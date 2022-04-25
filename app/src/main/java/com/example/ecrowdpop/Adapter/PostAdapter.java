@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ecrowdpop.Fragments.ProfileFragment;
+import com.example.ecrowdpop.Fragments.SearchFragment;
 import com.example.ecrowdpop.Model.Post;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -59,9 +60,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(mContext).inflate(R.layout.post_item , parent , false);
-
         return new PostAdapter.ViewHolder(view);
     }
 
@@ -85,6 +84,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         noLikes(holder.likes , post.getPostid());
         getComments(post.getPostid() , holder.comments);
         isSaved(post.getPostid() , holder.save);
+
+
+
 
         holder.image_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,11 +116,27 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS" , Context.MODE_PRIVATE).edit();
-                editor.putString("profileid" , post.getPublisher());
-                editor.apply();
 
-                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ProfileFragment()).commit();
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(post.getPublisher());
+
+                reference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        User user = dataSnapshot.getValue(User.class);
+                        String cat = user.getCategory();
+                        editor.putString("category" , cat);
+//                        Toast.makeText(mContext.getApplicationContext(), cat, Toast.LENGTH_LONG).show();
+                        editor.apply();
+                        ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new SearchFragment()).commit();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
             }
         });
 
@@ -273,6 +291,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             description = itemView.findViewById(R.id.description);
             comments = itemView.findViewById(R.id.comments);
         }
+
     }
 
     private void getComments(String postid , final TextView comments){
@@ -366,6 +385,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             }
         });
     }
+
+
 
     private void isSaved (final String postid , final ImageView imageView) {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();

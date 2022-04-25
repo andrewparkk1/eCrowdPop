@@ -1,5 +1,7 @@
 package com.example.ecrowdpop.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.example.ecrowdpop.Model.Category;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,6 +36,7 @@ import com.example.ecrowdpop.Model.User;
 import com.example.ecrowdpop.R;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -44,12 +48,17 @@ public class SearchFragment extends Fragment {
     private UserAdapter userAdapter;
     private List<User> mUsers;
 
+    private HashSet<Category> mCategories;
+
     private List<HashTag> mTagsPost;
 
     private SocialAutoCompleteTextView search_bar;
 
     private List<String> mAvailablehashtags;
     private List<String> mAvailablehashtagsCount;
+
+    String category;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,8 +82,13 @@ public class SearchFragment extends Fragment {
         userAdapter = new UserAdapter(getContext() , mUsers , true);
         recyclerView.setAdapter(userAdapter);
 
+        mCategories = new HashSet<>();
+
         tagAdapter = new TagAdapter(getContext() , mAvailablehashtags , mAvailablehashtagsCount);
         recyclerViewTags.setAdapter(tagAdapter);
+
+        SharedPreferences prefs = getContext().getSharedPreferences("PREFS" , Context.MODE_PRIVATE);
+        category = prefs.getString("category" , "none");
 
         readUsers();
         readTags();
@@ -154,6 +168,7 @@ public class SearchFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     User user = snapshot.getValue(User.class);
                     mUsers.add(user);
+
                 }
 
                 userAdapter.notifyDataSetChanged();
@@ -168,7 +183,6 @@ public class SearchFragment extends Fragment {
     }
 
     private void readUsers () {
-
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -177,9 +191,11 @@ public class SearchFragment extends Fragment {
                     mUsers.clear();
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                         User user = snapshot.getValue(User.class);
-                        mUsers.add(user);
+                        if (user != null && user.getCategory().equals(category)) {
+                            mUsers.add(user);
+                        }
+//                        mUsers.add(user);
                     }
-
                     userAdapter.notifyDataSetChanged();
                 }
             }
@@ -189,8 +205,9 @@ public class SearchFragment extends Fragment {
 
             }
         });
-
     }
+
+
 
     @Override
     public void onStart() {

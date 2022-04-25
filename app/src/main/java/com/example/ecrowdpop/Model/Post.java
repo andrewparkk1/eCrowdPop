@@ -8,6 +8,7 @@ public class Post {
     private String publisher;
 
     public Post() {
+
     }
 
     public Post(String postid, String postimage, String description, String publisher) {

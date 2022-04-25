@@ -1,4 +1,6 @@
 package com.example.ecrowdpop;
+import static java.security.AccessController.getContext;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,11 +18,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ecrowdpop.Model.User;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +36,7 @@ import com.google.firebase.storage.StorageTask;
 import com.hendraanggrian.appcompat.socialview.Hashtag;
 import com.hendraanggrian.appcompat.widget.HashtagArrayAdapter;
 import com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.util.HashMap;
@@ -118,6 +123,8 @@ public class PostActivity extends AppCompatActivity {
                         HashMap<String , Object> hashMap = new HashMap<>();
                         hashMap.put("postid" , postid);
                         hashMap.put("postimage" , myUrl);
+                        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                         hashMap.put("description" , description.getText().toString());
                         hashMap.put("publisher" , FirebaseAuth.getInstance().getCurrentUser().getUid());
 

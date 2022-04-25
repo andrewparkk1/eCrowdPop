@@ -9,16 +9,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.ecrowdpop.Fragments.CategoryFragment;
 import com.example.ecrowdpop.Fragments.CircleSearchFragment;
+import com.example.ecrowdpop.Fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.example.ecrowdpop.Fragments.HomeFragment;
 import com.example.ecrowdpop.Fragments.NotificationFragment;
 import com.example.ecrowdpop.Fragments.ProfileFragment;
-import com.example.ecrowdpop.Fragments.SearchFragment;
-import com.example.ecrowdpop.Fragments.CircleSearchFragment;
-
 
 
 public class MainActivity extends AppCompatActivity {
@@ -68,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
                         case R.id.nav_search_circle:
 //                            selecterFragment = new CircleSearchFragment();
-                            selecterFragment = new CategoryFragment();
+                            selecterFragment = new CircleSearchFragment();
                             break;
 
                         case R.id.nav_add:
