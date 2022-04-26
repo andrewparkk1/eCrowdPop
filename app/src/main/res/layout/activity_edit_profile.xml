@@ -55,7 +55,6 @@
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
@@ -99,7 +98,6 @@
             android:layout_marginTop="20dp"
             app:met_floatingLabel="normal"
             android:visibility="invisible"/>
-
 
         <TextView
             android:layout_width="wrap_content"

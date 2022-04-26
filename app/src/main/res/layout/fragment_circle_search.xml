@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.CircleSearchFragment">
+
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -36,224 +39,292 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
+    <Button
+        android:layout_below="@id/bar"
+        android:layout_margin="10dp"
+        app:layout_gravity="center"
+        app:layout_columnWeight="1"
+        android:id="@+id/all"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="All Categories"
+        android:textSize="12sp" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/firstcol"
-        android:layout_below="@+id/bar"
-        android:orientation="vertical">
+        android:layout_below="@id/all"
+        >
+
+
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        app:columnCount="3">
+
 
         <TextView
+            android:id="@+id/marketingadvertisement"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
+            android:layout_margin="10dp"
             android:background="@drawable/text_view_circle"
-            android:padding="8dp"
             android:gravity="center"
-            android:textSize="12sp"
-            android:id="@+id/marketingadvertisement"
+            android:padding="8dp"
             android:text="Marketing/Advertisement"
-            />
+            android:textSize="12sp" />
 
         <TextView
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/retailecommerce"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_margin="10dp"
             android:background="@drawable/text_view_circle"
             android:gravity="center"
             android:padding="8dp"
+
             android:text="Retail/ECommerce"
             android:textSize="12sp" />
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/science"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:gravity="center"
+            android:padding="8dp"
             android:text="Science"
-            />
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/consumertechnology"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:gravity="center"
+            android:padding="8dp"
             android:text="Consumer Technology"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@id/firstcol"
-        android:layout_below="@+id/bar"
-
-        android:id="@+id/seccol"
-        android:orientation="vertical">
+            android:textSize="12sp" />
 
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/games"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:gravity="center"
+            android:padding="8dp"
             android:text="Games"
-            />
+            android:textSize="12sp" />
+
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/healthcare"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:gravity="center"
+            android:padding="8dp"
             android:text="Healthcare"
-            />
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/media"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:gravity="center"
+            android:padding="8dp"
             android:text="Media"
-            />
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/artstyle"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:gravity="center"
+            android:padding="8dp"
             android:text="Art/Style"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_below="@+id/bar"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/thirdcol"
-        android:layout_toRightOf="@id/seccol">
-
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/manufacturingindustry"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:gravity="center"
+            android:padding="8dp"
             android:text="Manufacturing/Industry"
-            />
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/socialimpact"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:gravity="center"
+            android:padding="8dp"
             android:text="Social Impact"
-            />
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/socialmedia"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:gravity="center"
+            android:padding="8dp"
             android:text="Social Media"
-            />
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/education"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:gravity="center"
+            android:padding="8dp"
             android:text="Education"
-            />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_below="@+id/bar"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_toRightOf="@id/thirdcol">
-
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/energy"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:gravity="center"
+            android:padding="8dp"
             android:text="Energy"
+            android:textSize="12sp"
 
             />
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/fooddrink"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/text_view_circle"
+            android:gravity="center"
+            android:padding="8dp"
             android:text="Food/Drink"
-            />
+            android:textSize="12sp" />
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/text_view_circle"
-            android:padding="8dp"
-            android:gravity="center"
-            android:textSize="12sp"
+            android:layout_margin="10dp"
+            app:layout_gravity="center"
+            app:layout_columnWeight="1"
             android:id="@+id/finance"
-            android:text="Finance"
-            />
-
-        <TextView
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/text_view_circle"
-            android:padding="8dp"
             android:gravity="center"
-            android:textSize="12sp"
-            android:id="@+id/all"
-            android:text="All"
-            />
+            android:padding="8dp"
+            android:text="Finance"
+            android:textSize="12sp" />
 
-    </LinearLayout>
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/firstcol"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:layout_below="@+id/bar"-->
+        <!--            android:orientation="vertical">-->
+
+        <!--           -->
+
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/seccol"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:layout_below="@+id/bar"-->
+
+        <!--            android:layout_toRightOf="@id/firstcol"-->
+        <!--            android:orientation="vertical">-->
+
+
+        <!--            -->
+
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:id="@+id/thirdcol"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:layout_below="@+id/bar"-->
+        <!--            android:layout_toRightOf="@id/seccol"-->
+        <!--            android:orientation="vertical">-->
+
+
+        <!--            -->
+
+
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:layout_below="@+id/bar"-->
+        <!--            android:layout_toRightOf="@id/thirdcol"-->
+        <!--            android:orientation="vertical">-->
+
+
+        <!--            -->
+
+        <!--        </LinearLayout>-->
+
+
+    </androidx.gridlayout.widget.GridLayout>
+
+    </ScrollView>
+
+
+
 
 
 
