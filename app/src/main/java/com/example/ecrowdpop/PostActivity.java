@@ -33,8 +33,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
-import com.hendraanggrian.appcompat.socialview.Hashtag;
-import com.hendraanggrian.appcompat.widget.HashtagArrayAdapter;
 import com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -129,18 +127,6 @@ public class PostActivity extends AppCompatActivity {
 
                         reference.child(postid).setValue(hashMap);
 
-                        DatabaseReference mHashTagRef = FirebaseDatabase.getInstance().getReference().child("HashTags");
-                        List<String> hashTags = description.getHashtags();
-                        if (!hashTags.isEmpty()){
-                            for (String hashTag : hashTags){
-                                hashMap.clear();
-
-                                hashMap.put("tag" , hashTag.toLowerCase());
-                                hashMap.put("postid" , postid);
-
-                                mHashTagRef.child(hashTag.toLowerCase()).child(postid).setValue(hashMap);
-                            }
-                        }
 
                         progressDialog.dismiss();
 
@@ -165,7 +151,6 @@ public class PostActivity extends AppCompatActivity {
     private String getFileExtension(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
-
         return mime.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 
@@ -190,24 +175,5 @@ public class PostActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        final ArrayAdapter<Hashtag> hashtagAdapter = new HashtagArrayAdapter<>(getApplicationContext());
-        final DatabaseReference mHashTagRef = FirebaseDatabase.getInstance().getReference().child("HashTags");
-
-        mHashTagRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    hashtagAdapter.add(new Hashtag(snapshot.getKey() , (int)snapshot.getChildrenCount()));
-                    Log.d("HashTag" , snapshot.getKey());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        description.setHashtagAdapter(hashtagAdapter);
     }
 }

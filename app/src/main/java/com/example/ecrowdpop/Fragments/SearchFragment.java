@@ -25,13 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.hendraanggrian.appcompat.socialview.Hashtag;
-import com.hendraanggrian.appcompat.widget.HashtagArrayAdapter;
 import com.hendraanggrian.appcompat.widget.SocialAutoCompleteTextView;
-import com.example.ecrowdpop.Adapter.TagAdapter;
 import com.example.ecrowdpop.Adapter.UserAdapter;
 
-import com.example.ecrowdpop.Model.HashTag;
 import com.example.ecrowdpop.Model.User;
 import com.example.ecrowdpop.R;
 
@@ -45,21 +41,8 @@ public class SearchFragment extends Fragment {
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     private List<User> mUsers;
-
-
-    private RecyclerView recyclerViewTags;
-    private TagAdapter tagAdapter;
-
-
     private HashSet<Category> mCategories;
-
-    private List<HashTag> mTagsPost;
-
     private SocialAutoCompleteTextView search_bar;
-
-    private List<String> mAvailablehashtags;
-    private List<String> mAvailablehashtagsCount;
-
     String category;
 
 
@@ -72,14 +55,7 @@ public class SearchFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        recyclerViewTags = view.findViewById(R.id.recycler_view_tags);
-        recyclerViewTags.setHasFixedSize(true);
-        recyclerViewTags.setLayoutManager(new LinearLayoutManager(getContext()));
-
         search_bar = view.findViewById(R.id.search_bar);
-        mTagsPost = new ArrayList<>();
-        mAvailablehashtags = new ArrayList<>();
-        mAvailablehashtagsCount = new ArrayList<>();
 
         mUsers = new ArrayList<>();
         userAdapter = new UserAdapter(getContext() , mUsers , true);
@@ -87,14 +63,10 @@ public class SearchFragment extends Fragment {
 
         mCategories = new HashSet<>();
 
-        tagAdapter = new TagAdapter(getContext() , mAvailablehashtags , mAvailablehashtagsCount);
-        recyclerViewTags.setAdapter(tagAdapter);
-
         SharedPreferences prefs = getContext().getSharedPreferences("PREFS" , Context.MODE_PRIVATE);
         category = prefs.getString("category" , "none");
 
         readUsers();
-        readTags();
         search_bar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -109,51 +81,12 @@ public class SearchFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
-                filter(s.toString());
+                searchUser(s.toString());
 
             }
         });
 
         return view;
-    }
-
-    private void filter(String text) {
-
-        List<String> mSearchtags = new ArrayList<>();
-        List<String> mSearchTagsCount = new ArrayList<>();
-
-        for (String s : mAvailablehashtags){
-            if (s.toLowerCase().contains(text.toLowerCase())){
-                mSearchtags.add(s);
-                mSearchTagsCount.add(mAvailablehashtagsCount.get(mAvailablehashtags.indexOf(s)));
-            }
-        }
-
-        tagAdapter.filterList(mSearchtags , mSearchTagsCount);
-
-    }
-
-    private void readTags() {
-
-        FirebaseDatabase.getInstance().getReference().child("HashTags").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mAvailablehashtagsCount.clear();
-                mAvailablehashtags.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    mAvailablehashtags.add(snapshot.getKey());
-                    mAvailablehashtagsCount.add(snapshot.getChildrenCount() + " ");
-                }
-
-                tagAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
     }
 
     private void searchUser (String s) {
@@ -175,9 +108,7 @@ public class SearchFragment extends Fragment {
                 }
 
                 userAdapter.notifyDataSetChanged();
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -217,28 +148,5 @@ public class SearchFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
-        final ArrayAdapter<Hashtag> hashtagAdapter = new HashtagArrayAdapter<>(getContext());
-
-        FirebaseDatabase.getInstance().getReference().child("HashTags").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mAvailablehashtagsCount.clear();
-                mAvailablehashtags.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    hashtagAdapter.add(new Hashtag(snapshot.getKey() , (int)snapshot.getChildrenCount()));
-                    mAvailablehashtags.add(snapshot.getKey());
-                    mAvailablehashtagsCount.add(snapshot.getChildrenCount() + " ");
-                    Log.d("HashTag" , snapshot.getKey());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        search_bar.setHashtagAdapter(hashtagAdapter);
     }
 }

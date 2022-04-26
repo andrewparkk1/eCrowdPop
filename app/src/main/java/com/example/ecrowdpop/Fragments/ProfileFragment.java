@@ -148,8 +148,6 @@ public class ProfileFragment extends Fragment {
         recyclerView_likes.setVisibility(View.GONE);
         recyclerView_following.setVisibility(View.GONE);
 
-
-
         userInfo();
         getFollowers();
         getNrPosts();
@@ -223,8 +221,6 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
 
 
         my_fotos.setOnClickListener(new View.OnClickListener() {
@@ -308,7 +304,6 @@ public class ProfileFragment extends Fragment {
                             userList.add(user);
                     }
                 }
-
                 userAdapter.notifyDataSetChanged();
             }
 
